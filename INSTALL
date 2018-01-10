@@ -1,0 +1,9 @@
+Building katana
+
+See doc/readme-qt.rst for instructions on building katana QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of katana.
+
+See doc/build-*.txt for instructions on building katanad,
+the intended-for-services, no-graphical-interface, reference
+implementation of katana.

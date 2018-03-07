@@ -13,7 +13,11 @@ cache:
 
 before_install:
 # this is required for curl to work correctly:
-  - export COLUMNS=80
+   - export COLUMNS=80
+ - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
+ - chmod +x ./macports-ci
+ - ./macports-ci install
+ - PATH="/opt/local/bin:$PATH"
   - if test -z "$PRE" ; then PRE=/opt/local ; fi
   - sudo chmod +x macports-ci 
   - sudo ./macports-ci install --prefix="$PRE" $OPT

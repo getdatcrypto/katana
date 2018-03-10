@@ -12,36 +12,18 @@ cache:
   - $HOME/.macports-ci-ccache
 
 before_install:
-# this is required for curl to work correctly:
-  - export COLUMNS=80
-  - curl -LO https://raw.githubusercontent.com/GiovanniBussi/macports-ci/master/macports-ci
-  - chmod +x ./macports-ci
-  - ./macports-ci install
-  - PATH="/opt/local/bin:$PATH"
-  - if test -z "$PRE" ; then PRE=/opt/local ; fi
-  - sudo chmod +x macports-ci 
-  - sudo ./macports-ci install --prefix="$PRE" $OPT
-  - PATH="$PRE/bin:$PATH"
-  - if test "$PRE" = /opt/local ; then ./macports-ci ccache ; fi
-  - which port
-  - pwd
-   - brew uninstall boost
-   - brew install boost@1.57
-   - brew link boost@1.57 --force
-  - sudo port -N install boost db48 openssl miniupnpc qrencode qt4-mac
-  - ls /usr/local/
-  - ls /opt/local/include/
-  - ls /opt/local/include/boost
-  - ls /opt/local/include/db48
-  - ls /opt/local/lib/
-  - ls /opt/local/lib/db48
-  - cd /usr/local/include 
-  - sudo ln -s ../opt/openssl/include/openssl .
+  - brew install autoconf libtool miniupnpc pkg-config
+  - brew upgrade openssl
+  - brew upgrade automake
+  - brew install boost protobuf libevent libqrencode
+  - brew install berkeley-db4
+  - brew install berkeley-db
+  - brew install qt5 --with-dbus
+  - brew link qt5 --force --overwrite
   - cd /Users/travis/build/getdatcrypto/katana
-  - chmod 755 src/leveldb/build_detect_platform
-  - chmod 755 *
-  - cd ../..
+  
   
 script: 
   - cd src
+  - make clean
   - make -f makefile.osx RELEASE=true

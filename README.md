@@ -1,4 +1,4 @@
-
+**OLD KATANA SOURCE V1.0 COIN SWAP PREFORMED ON 3/27/2018 via discord swapbot. KATANA K2X current version.
 katana development tree
 
 katana is a PoS-based cryptocurrency.
